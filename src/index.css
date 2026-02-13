@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-900 via-[#1a1a2e] to-[#0f3460] text-white font-exo;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+
+  /* Service Card Hover Effects */
+  .service-card {
+    @apply relative bg-white/5 backdrop-blur-sm border-2 border-transparent transition-all duration-300 overflow-hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    @apply absolute z-[-1] top-[-16px] left-[-16px] h-32 w-32 rounded-full transform scale-100 transition-transform duration-300 ease-out;
+    transform-origin: 50% 50%;
+  }
+
+  .service-card:hover::before {
+    transform: scale(21);
+  }
+
+  .service-card:hover {
+    @apply transform -translate-y-2 scale-105 shadow-xl;
+  }
+
+  .service-card:hover h3,
+  .service-card:hover p {
+    @apply text-white;
+  }
+
+  .service-card:nth-child(1)::before {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  }
+
+  .service-card:nth-child(2)::before {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  }
+
+  .service-card:nth-child(3)::before {
+    background: linear-gradient(135deg, #10b981, #0d9488);
+  }
+
+  .service-card:nth-child(4)::before {
+    background: linear-gradient(135deg, #f97316, #dc2626);
+  }
+
+  .service-card:nth-child(5)::before {
+    background: linear-gradient(135deg, #ec4899, #e11d48);
+  }
+
+  .service-card:nth-child(6)::before {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  }
+
+  /* Animated Button */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply relative inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full font-semibold text-white transition-all duration-300 hover:bg-white/20 hover:border-white/50;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  /* Tech Card Animation */
+  .tech-card {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-tech-card {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+}
+
+@layer utilities {
+
+  /* Background Patterns */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(120, 119, 198, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120, 119, 198, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glow Effects */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3);
+  }
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 640px) {
+  section[class*="pt-20"] {
+    padding-top: 6rem !important;
+  }
+
+  section[class*="pt-32"] {
+    padding-top: 7rem !important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+  }
+}
